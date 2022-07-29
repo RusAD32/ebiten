@@ -37,6 +37,10 @@ type Image struct {
 	volatile bool
 }
 
+func (i *Image) DebugInfo() atlas.ImageDebugInfo {
+	return i.mipmap.DebugInfo()
+}
+
 func NewImage(width, height int, imageType atlas.ImageType) *Image {
 	return &Image{
 		mipmap:   mipmap.New(width, height, imageType),

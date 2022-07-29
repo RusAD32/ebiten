@@ -36,6 +36,10 @@ type Mipmap struct {
 	imgs     map[int]*buffered.Image
 }
 
+func (m *Mipmap) DebugInfo() atlas.ImageDebugInfo {
+	return m.orig.DebugInfo()
+}
+
 func New(width, height int, imageType atlas.ImageType) *Mipmap {
 	return &Mipmap{
 		width:    width,

@@ -46,6 +46,11 @@ type Image struct {
 	bufferedRP []*graphicsdriver.ReplacePixelsArgs
 }
 
+// GetID returns id of the image for debug purposes.
+func (i *Image) GetID() int {
+	return i.id
+}
+
 var nextID = 1
 
 func genNextID() int {

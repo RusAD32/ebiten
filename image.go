@@ -42,6 +42,25 @@ type Image struct {
 	setVerticesCache map[[2]int][4]byte
 }
 
+type ImageDebugInfo struct {
+	atlas.ImageDebugInfo
+	OriginX int
+	OriginY int
+	Width   int
+	Height  int
+}
+
+func (i *Image) DebugInfo() ImageDebugInfo {
+	dbg := i.image.DebugInfo()
+	return ImageDebugInfo{
+		ImageDebugInfo: dbg,
+		OriginX:        i.bounds.Min.X,
+		OriginY:        i.bounds.Min.Y,
+		Width:          i.bounds.Dx(),
+		Height:         i.bounds.Dy(),
+	}
+}
+
 var emptyImage *Image
 
 func init() {

@@ -236,6 +236,22 @@ type Image struct {
 	isolatedCount int
 }
 
+type ImageDebugInfo struct {
+	ID   int
+	Type ImageType
+}
+
+func (i *Image) DebugInfo() ImageDebugInfo {
+	id := -1
+	if i.backend != nil {
+		id = i.backend.restorable.GetUnderlyingID()
+	}
+	return ImageDebugInfo{
+		ID:   id,
+		Type: i.imageType,
+	}
+}
+
 // moveTo moves its content to the given image dst.
 // After moveTo is called, the image i is no longer available.
 //

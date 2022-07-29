@@ -32,6 +32,10 @@ type Image struct {
 	pixels []byte
 }
 
+func (i *Image) DebugInfo() atlas.ImageDebugInfo {
+	return i.img.DebugInfo()
+}
+
 func BeginFrame(graphicsDriver graphicsdriver.Graphics) error {
 	if err := atlas.BeginFrame(graphicsDriver); err != nil {
 		return err

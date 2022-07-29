@@ -120,6 +120,11 @@ type Image struct {
 	priority bool
 }
 
+// GetUnderlyingID returns id of the underlying image, for debug purposes.
+func (i *Image) GetUnderlyingID() int {
+	return i.image.GetID()
+}
+
 var emptyImage *Image
 
 func ensureEmptyImage() *Image {
